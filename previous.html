@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Aditya Sharma | AI & CSE Portfolio</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- CSS Dependencies -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+
+    <style>
+        /* -------------------------------------------
+           VARIABLES & RESET
+        ------------------------------------------- */
+        :root {
+            --primary: #7028e4;     /* Purple */
+            --secondary: #E91E63;   /* Pink */
+            --white: #ffffff;
+            --black: #212121;
+            --gray-100: #f8f9fa;
+            --gray-600: #6c757d;
+            --footer: #181818;
+            --gradient: linear-gradient(to right, rgba(112, 40, 228, 0.95), rgba(233, 30, 99, 0.95));
+            --shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* -------------------------------------------
+           MIXINS / UTILITIES RECREATED
+        ------------------------------------------- */
+        .gradient-bg {
+            background: var(--gradient);
+        }
+
+        .gradient-text {
+            background-image: linear-gradient(to right, var(--primary), var(--secondary));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .heading-line {
+            position: relative;
+        }
+        
+        .heading-line::before {
+            content: "";
+            width: 10rem;
+            height: 0.1rem;
+            display: block;
+            margin: 0 auto;
+            background-color: var(--primary);
+        }
+
+        .heading-line::after {
+            content: "";
+            width: 2rem;
+            padding-top: 0.5rem;
+            height: 0.2rem;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 1rem;
+            background-color: var(--primary);
+        }
+
+        /* -------------------------------------------
+           BUTTONS (From your SCSS)
+        ------------------------------------------- */
+        .btn-rounded {
+            position: relative;
+            padding: 0.8375rem 4.375rem 0.8375rem 1.25rem;
+            font-weight: 700;
+            margin: 0;
+            border: 0.1rem solid rgba(255, 255, 255, 0.6);
+            background-color: var(--white);
+            color: var(--black);
+            display: inline-block;
+            border-radius: 50rem;
+            transition: all 0.3s ease-in-out;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .btn-rounded span {
+            position: absolute;
+            background-color: var(--primary);
+            width: 2.5rem;
+            height: 2.5rem;
+            top: 50%;
+            right: 5px;
+            transform: translateY(-50%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .btn-rounded span i {
+            color: var(--white);
+            font-size: 1rem;
+        }
+
+        .btn-rounded:hover {
+            background: var(--gradient);
+            color: var(--white);
+            border-color: transparent;
+            box-shadow: 0 0 15px rgba(112, 40, 228, 0.5);
+        }
+
+        .btn-rounded:hover span {
+            background-color: rgba(33, 33, 33, 0.6);
+        }
+
+        /* Variant for dark backgrounds or outline style */
+        .btn-rounded.border-primary {
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--black);
+        }
+        .btn-rounded.border-primary:hover {
+            background: var(--gradient);
+            color: var(--white);
+            border-color: transparent;
+        }
+
+        /* -------------------------------------------
+           NAVBAR
+        ------------------------------------------- */
+        .navbar {
+            transition: all 0.5s ease;
+            padding: 1rem 0;
+        }
+        
+        .navbar.scrolled {
+            background: rgba(33, 33, 33, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 0;
+        }
+
+        /* Initial transparent state logic handles via JS or default class */
+        .menu {
+            /* Handled by .scrolled logic generally, but gradient on mobile menu items needed */
+        }
+        
+        .navbar-brand h3 {
+            color: var(--white);
+            letter-spacing: 2px;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.8) !important;
+            font-weight: 500;
+            position: relative;
+            margin: 0 0.5rem;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--white) !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--white);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* -------------------------------------------
+           INTRO SECTION
+        ------------------------------------------- */
+        .intro-section {
+            background: var(--gradient);
+            padding: 10rem 0 0 0;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro-section::before {
+            content: "";
+            position: absolute;
+            top: -10%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+        }
+
+        .display-2--intro {
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .display-2--description {
+            font-size: 1.1rem;
+            display: block;
+            margin-top: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Typing cursor */
+        .typing-text::after {
+            content: '|';
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .video-box {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .video-box img {
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Wave Separator */
+        .wave-bottom {
+            width: 100%;
+            line-height: 0;
+            margin-top: -5px; /* Fix gap */
+        }
+
+        /* -------------------------------------------
+           SERVICES / SKILLS
+        ------------------------------------------- */
+        .services {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .services__content {
+            padding: 2rem;
+            transition: transform 0.3s;
+        }
+
+        .services__content:hover {
+            transform: translateY(-5px);
+        }
+
+        .services__content .icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .display-3--title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            background: -webkit-linear-gradient(var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        /* -------------------------------------------
+           TESTIMONIALS
+        ------------------------------------------- */
+        .testimonials {
+            background: var(--gradient);
+            color: var(--white);
+            padding-bottom: 5rem;
+        }
+
+        .testimonials__card {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 2.5rem 2rem;
+            border-radius: 1rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            color: var(--black);
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .testimonials__card i.fa-quote-left {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+
+        .testimonials__card i.fa-quote-right {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-left: 10px;
+        }
+
+        .testimonials__picture img {
+            width: 80px;
+            height: 80px;
+            border: 4px solid var(--white);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .ratings i {
+            color: #FFD700; /* Gold for stars */
+        }
+
+        /* -------------------------------------------
+           PORTFOLIO
+        ------------------------------------------- */
+        .portfolio {
+            padding: 5rem 0;
+            background-color: var(--gray-100);
+        }
+
+        .portfolio-box {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            background: #000;
+        }
+
+        .portfolio-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            opacity: 0.9;
+        }
+
+        .portfolio-box:hover img {
+            transform: scale(1.1);
+            opacity: 0.4;
+        }
+
+        .portfolio-info {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-box:hover .portfolio-info {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .portfolio-info h4 {
+            color: var(--white);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            padding: 0 10px;
+        }
+
+        .portfolio-info p {
+            color: var(--white);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        /* -------------------------------------------
+           CONTACT & FOOTER
+        ------------------------------------------- */
+        .get-started {
+            padding: 5rem 0;
+        }
+
+        .gradient-card {
+            background: var(--gradient);
+            border-radius: 1rem;
+            color: var(--white);
+        }
+
+        .form-control {
+            border-radius: 0.5rem;
+            border: 1px solid #eee;
+            padding: 1rem;
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 0 0.25rem rgba(112, 40, 228, 0.25);
+            border-color: var(--primary);
+        }
+
+        .footer {
+            background-color: var(--footer);
+            padding-top: 3rem;
+        }
+
+        .contact-box__icon svg {
+            stroke: var(--primary);
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+
+        .contact-box__info--title {
+            color: var(--white);
+            font-size: 1.2rem;
+            text-decoration: none;
+            display: block;
+        }
+
+        .footer-sm a i {
+            font-size: 1.5rem;
+            margin: 0 10px;
+            color: var(--white);
+            transition: color 0.3s;
+        }
+
+        .footer-sm a:hover i {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            background-color: #000;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+
+        /* -------------------------------------------
+           WHATSAPP FLOAT
+        ------------------------------------------- */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            color: white;
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        /* -------------------------------------------
+           RESPONSIVE TWEAKS
+        ------------------------------------------- */
+        @media (max-width: 991px) {
+            .intro-section {
+                padding-top: 6rem;
+                text-align: center;
+            }
+            .intros.text-start, .intros.text-end {
+                text-align: center !important;
+            }
+            .video-box img {
+                margin-top: 3rem;
+                max-width: 80%;
+            }
+            .navbar {
+                background: rgba(33, 33, 33, 0.95); /* Always dark on mobile */
+            }
+            .display-2 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="70">
+
+<!-- ////////////////////////////////////////////////////////////////////////////////////////
+                               NAVBAR SECTION  
+/////////////////////////////////////////////////////////////////////////////////////////////-->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <h3 class="fw-bold mb-0">ADITYA.</h3>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Expertise</a></li>
+          <li class="nav-item"><a class="nav-link" href="#portfolio">Work</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials">Recognition</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+        <a href="tel:7976082642" class="text-decoration-none ms-lg-3 mt-3 mt-lg-0">
+          <button type="button" class="btn-rounded border-primary text-white d-none d-lg-block" style="border-color:white;">
+            +91 7976082642
+            <span><i class="fas fa-phone-alt"></i></span>
+          </button>
+        </a>
+      </div>
+    </div>
+</nav>
+
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////////
+                            INTRO SECTION  
+/////////////////////////////////////////////////////////////////////////////////////////////////////-->
+<section id="home" class="intro-section">
+  <div class="container">
+    <div class="row align-items-center text-white">
+      <!-- CONTENT -->
+      <div class="col-md-12 col-lg-6 intros text-start">
+        <h1 class="display-2 fw-bold">
+          <span class="display-2--intro">Hello, I'm Aditya</span>
+          <br>
+          <span class="text-white-50 fs-3">I Build <span class="typing-text fw-bold text-white"></span></span>
+        </h1>
+        <p class="display-2--description lh-lg mb-4">
+            Final-year B.Tech CSE student specializing in AI, Deep Learning, and Data Science. 
+            Winner at JECRC IEEE Yesist12 and International Finalist at Tunis Science City.
+        </p>
+        <div class="d-flex flex-wrap gap-3 mt-4 justify-content-center justify-content-lg-start">
+            <a href="#contact" class="text-decoration-none">
+                <button type="button" class="btn-rounded shadow">
+                    Get in Touch
+                    <span><i class="fas fa-arrow-right"></i></span>
+                </button>
+            </a>
+            <a href=".\images\portfolio\Aditya_Sharma.pdf" class="text-decoration-none" download>
+                <button type="button" class="btn-rounded border-primary" style="background:transparent; color: white; border-color: white;">
+                    Download CV
+                    <span><i class="fas fa-download"></i></span>
+                </button>
+            </a>
+        </div>
+      </div>
+      <!-- IMAGE -->
+      <div class="col-md-12 col-lg-6 intros text-end">
+        <div class="video-box">
+          <!-- Using a 3D looking placeholder or your actual image -->
+          <img src="images/arts/intro-section-illustration.png" alt="AI illustration" class="img-fluid" style="max-height: 500px;">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- WAVE SVG -->
+  <div class="wave-bottom">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,160L48,176C96,192,192,224,288,208C384,192,480,128,576,133.3C672,139,768,213,864,202.7C960,192,1056,96,1152,74.7C1248,53,1344,107,1392,133.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+  </div>
+</section>
+
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////
+                         SERVICES / SKILLS  
+///////////////////////////////////////////////////////////////////////////////////////////////////-->
+<section id="services" class="services">
+  <div class="container">
+    <div class="row text-center mb-5">
+      <h1 class="display-3 fw-bold">My Expertise</h1>
+      <div class="heading-line"></div>
+      <p class="lead text-muted mt-3">
+        Blending cutting-edge AI research with robust software engineering.
+      </p>
+    </div>
+
+    <!-- AI & ML -->
+    <div class="row align-items-center mb-5">
+      <div class="col-lg-6 order-2 order-lg-1">
+        <div class="services__content">
+          <div class="icon"><i class="fas fa-brain"></i></div>
+          <h3 class="display-3--title">AI & Data Science</h3>
+          <p class="lh-lg text-secondary">
+            Specialized in Artificial Intelligence, Deep Learning, and Predictive Analytics. 
+            Experienced in building AutoML platforms and deploying offline LLMs using OLLAMA. 
+            I transform raw data into actionable insights using Python, TensorFlow, and PyTorch.
+          </p>
+          <button type="button" class="btn-rounded border-primary mt-3">
+            Tech Stack
+            <span><i class="fas fa-microchip"></i></span>
+          </button>
+        </div>
+      </div>
+      <div class="col-lg-6 order-1 order-lg-2 text-center">
+        <img src="images/services/service-1.png" alt="AI illustration" class="img-fluid w-75">
+      </div>
+    </div>
+
+    <!-- Web Dev -->
+    <div class="row align-items-center mb-5">
+      <div class="col-lg-6 text-center">
+        <img src="images/services/service-2.png" alt="Web Dev" class="img-fluid w-75">
+      </div>
+      <div class="col-lg-6">
+        <div class="services__content">
+          <div class="icon"><i class="fas fa-code"></i></div>
+          <h3 class="display-3--title">Web Development</h3>
+          <p class="lh-lg text-secondary">
+            Developed secure video call & chat applications and interactive data visualization dashboards. 
+            Proficient in Java, Python, Web tools and Framework. I focus on building scalable, secure, and user-friendly web architectures.
+          </p>
+          <a href="https://github.com/Aditya-Roy-oops" target="_blank">
+            <button type="button" class="btn-rounded border-primary mt-3">
+              GitHub
+              <span><i class="fab fa-github"></i></span>
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- IoT -->
+    <div class="row align-items-center">
+      <div class="col-lg-6 order-2 order-lg-1">
+        <div class="services__content">
+          <div class="icon"><i class="fas fa-lightbulb"></i></div>
+          <h3 class="display-3--title">IoT & Creative Design</h3>
+          <p class="lh-lg text-secondary">
+            Bridging the physical and digital worlds. Hands-on experience with IoT Smart Switches and Voice Assistants. 
+            Also served as Lead Graphic Designer and UI lead for major college tech events, ensuring aesthetic excellence.
+          </p>
+          <a href="#portfolio">
+            <button type="button" class="btn-rounded border-primary mt-3">
+              Portfolio
+              <span><i class="fas fa-palette"></i></span>
+            </button>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-6 order-1 order-lg-2 text-center">
+        <img src="images/services/service-3.png" alt="IoT" class="img-fluid w-75">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////
+                               TESTIMONIALS  
+/////////////////////////////////////////////////////////////////////////////////////////////////////-->
+<section id="testimonials" class="testimonials">
+  <div class="wave-top" style="transform: rotate(180deg); margin-bottom: -1px;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,96L48,128C96,160,192,224,288,213.3C384,203,480,117,576,117.3C672,117,768,203,864,202.7C960,203,1056,117,1152,117.3C1248,117,1344,203,1392,245.3L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+  </div>
+  
+  <div class="container pt-5">
+    <div class="row text-center text-white mb-5">
+      <h1 class="display-3 fw-bold">Recognitions</h1>
+      <hr style="width: 100px; height: 3px; background-color: white; opacity: 1;" class="mx-auto my-3">
+      <p class="lead">What mentors and peers say about my work</p>
+    </div>
+
+    <!-- CAROUSEL -->
+    <div class="row justify-content-center">
+      <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <!-- ITEM 1 -->
+          <div class="carousel-item active">
+            <div class="testimonials__card mx-auto">
+              <p class="lh-lg lead fst-italic">
+                <i class="fas fa-quote-left"></i>
+                Aditya's performance at IEEE Yesist12 was remarkable. His ability to present complex AI solutions at an international level in Tunis shows his global readiness.
+                <i class="fas fa-quote-right"></i>
+              </p>
+              <div class="ratings p-1 text-center">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+            </div>
+            <div class="text-center mt-4">
+                <div class="testimonials__picture position-relative d-inline-block">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="mentor" class="rounded-circle img-fluid">
+                </div>
+                <div class="testimonials__name">
+                    <h3>IEEE Global Committee</h3>
+                    <p class="fw-light text-white-50">Yesist12 Tunis Finals</p>
+                </div>
+            </div>
+          </div>     
+          <!-- ITEM 2 -->
+          <div class="carousel-item">
+            <div class="testimonials__card mx-auto">
+              <p class="lh-lg lead fst-italic">
+                <i class="fas fa-quote-left"></i>
+                As our Tech Club Lead, Aditya bridged the gap between design and engineering perfectly. His management of tech events made our college fest a huge success.
+                <i class="fas fa-quote-right"></i>
+              </p>
+              <div class="ratings p-1 text-center">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+            </div>
+            <div class="text-center mt-4">
+                <div class="testimonials__picture position-relative d-inline-block">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="council" class="rounded-circle img-fluid">
+                </div>
+                <div class="testimonials__name">
+                    <h3>Student Council</h3>
+                    <p class="fw-light text-white-50">Tech Fest Organizing Committee</p>
+                </div>
+            </div>
+          </div>     
+        </div>
+        <div class="text-center mt-4">
+            <button class="btn btn-outline-light rounded-circle me-2" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev" style="width: 50px; height: 50px;">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <button class="btn btn-outline-light rounded-circle ms-2" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next" style="width: 50px; height: 50px;">
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="wave-bottom" style="margin-bottom: -100px;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#f8f9fa" fill-opacity="1" d="M0,96L48,128C96,160,192,224,288,213.3C384,203,480,117,576,117.3C672,117,768,203,864,202.7C960,203,1056,117,1152,117.3C1248,117,1344,203,1392,245.3L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+  </div>
+</section>
+
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////
+                              PORTFOLIO  
+//////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+<section id="portfolio" class="portfolio">
+  <div class="container pt-5">
+    <div class="row text-center mt-5">
+      <h1 class="display-3 fw-bold text-capitalize">Latest work</h1>
+      <div class="heading-line"></div>
+      <p class="lead text-muted">
+        A showcase of my projects in AI, Web Tech, and IoT.
+      </p>
+    </div>
+    
+    <!-- FILTER BUTTONS -->
+    <div class="row mt-5 mb-4 g-3 text-center">
+      <div class="col-md-12">
+        <button class="btn btn-outline-primary active" type="button" onclick="filterProjects('all')">All</button>
+        <button class="btn btn-outline-primary" type="button" onclick="filterProjects('ai')">AI/ML</button>
+        <button class="btn btn-outline-primary" type="button" onclick="filterProjects('web')">Web</button>
+        <button class="btn btn-outline-primary" type="button" onclick="filterProjects('iot')">IoT</button>
+      </div>
+    </div>
+
+    <!-- ITEMS -->
+    <div class="row g-3">
+      <!-- Item 1 -->
+      <div class="col-lg-4 col-md-6 portfolio-item web">
+        <div class="portfolio-box shadow">
+          <img src="./images\portfolio\portfolio-1.png" alt="Video Call">
+          <div class="portfolio-info">
+            <div class="caption">
+              <h4>Secure Video Call</h4>
+              <p>WebRTC & Serverless</p>
+              <a href="#" class="btn btn-sm btn-outline-light mt-2 rounded-pill">View Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Item 2 -->
+      <div class="col-lg-4 col-md-6 portfolio-item ai web">
+        <div class="portfolio-box shadow">
+          <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Auto ML">
+          <div class="portfolio-info">
+            <div class="caption">
+              <h4>Auto ML Platform</h4>
+              <p>Python Machine Learning</p>
+              <a href="#" class="btn btn-sm btn-outline-light mt-2 rounded-pill">View Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Item 3 -->
+      <div class="col-lg-4 col-md-6 portfolio-item ai">
+        <div class="portfolio-box shadow">
+          <img src="./images\portfolio\portfolio-2.jpg" alt="Ollama">
+          <div class="portfolio-info">
+            <div class="caption">
+              <h4>Offline LLM (OLLAMA)</h4>
+              <p>Local AI Implementation</p>
+              <a href="#" class="btn btn-sm btn-outline-light mt-2 rounded-pill">View Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Item 4 -->
+      <div class="col-lg-4 col-md-6 portfolio-item iot web">
+        <div class="portfolio-box shadow">
+          <img src="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="IoT">
+          <div class="portfolio-info">
+            <div class="caption">
+              <h4>IoT Smart Switch</h4>
+              <p>ESP32 & Voice Command</p>
+              <a href="#" class="btn btn-sm btn-outline-light mt-2 rounded-pill">View Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Item 5 -->
+      <div class="col-lg-4 col-md-6 portfolio-item ai iot web">
+        <div class="portfolio-box shadow">
+          <img src="https://img.freepik.com/premium-vector/virtual-assistant-concept-with-microphone-icon-voice-wave-voice-recognition-personal-ai-assistant-search-technology-logo-design-chat-bot-artificial-intelligence-vector-illustration_653980-8.jpg?ixlib=rb-1.2.1&auto=format" alt="Assistant">
+          <div class="portfolio-info">
+            <div class="caption">
+              <h4>Voice Virtual Assistant</h4>
+              <p>NLP & Python</p>
+              <a href="#" class="btn btn-sm btn-outline-light mt-2 rounded-pill">View Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Item 6 -->
+      <div class="col-lg-4 col-md-6 portfolio-item iot web">
+        <div class="portfolio-box shadow">
+          <img src="./images\portfolio\portfolio-7.jpg" alt="IEEE">
+          <div class="portfolio-info">
+            <div class="caption">
+              <h4>IEEE Innovation</h4>
+              <p>Prototype</p>
+              <a href="#" class="btn btn-sm btn-outline-light mt-2 rounded-pill">View Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////
+              GET STARTED  
+/////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+<section id="contact" class="get-started">
+  <div class="container">
+    <div class="row text-center mb-5">
+      <h1 class="display-3 fw-bold text-capitalize">Let's Connect</h1>
+      <div class="heading-line"></div>
+      <p class="lh-lg text-muted">
+        Interested in collaborating on a project or discussing potential roles? Reach out to me below!
+      </p>
+    </div>
+
+    <!-- CTA CONTENT -->
+    <div class="row">
+      <div class="col-12 col-lg-6 gradient-card p-5 d-flex align-items-center">
+        <div class="cta-info w-100">
+          <h4 class="display-4 fw-bold mb-4">Ready to Solve Complex Problems?</h4>
+          <p class="lh-lg mb-4 opacity-75">
+            Whether it's Predictive Analytics, AutoML, or Statistical Modeling, I'm ready to leverage my skills for impactful business solutions.
+          </p>
+          <h3 class="h4 fw-bold mb-3">How I can help:</h3>
+          <ul class="list-unstyled opacity-75">
+            <li class="mb-2"><i class="fas fa-check-circle me-2"></i> End-to-end Machine Learning Pipelines</li>
+            <li class="mb-2"><i class="fas fa-check-circle me-2"></i> Custom Generative AI Solutions</li>
+            <li class="mb-2"><i class="fas fa-check-circle me-2"></i> Scalable Data-driven Web Apps</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6 bg-white shadow p-5">
+        <div class="form w-100">
+          <h4 class="mb-4 fw-bold">Send me a message</h4>
+          <form  id="contact-form" action="https://formspree.io/f/manppeyz" method="POST">
+            <div class="mb-3">
+              <input type="text" name="name" id="name" placeholder="Your Name" class="form-control form-control-lg" required>
+            </div>
+            <div class="mb-3">
+              <input type="text" id="subject" name="subject" placeholder="Subject" class="form-control form-control-lg">
+            </div>
+            <div class="mb-3">
+              <input type="email" name="email" id="email" placeholder="Email Address" class="form-control form-control-lg" required>
+            </div>
+            <div class="mb-3">
+              <textarea id="message" name="message" placeholder="Your Message" rows="5" class="form-control form-control-lg" required></textarea>
+            </div>
+            <div class="d-grid">
+              <button type="submit" id="submit-button" class="btn btn-primary btn-lg rounded-pill gradient-bg border-0">
+                Send Message <i class="fas fa-paper-plane ms-2"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////
+                           FOOTER  
+///////////////////////////////////////////////////////////////////////////////////////////////-->
+<footer class="footer">
+  <div class="container">
+    <div class="row justify-content-center">
+      <!-- MOBILE NUMBER -->
+      <div class="col-md-4 col-lg-4 contact-box d-flex flex-column align-items-center mb-4">
+        <div class="contact-box__icon mb-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-phone-call" viewBox="0 0 24 24" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+                <path d="M15 7a2 2 0 0 1 2 2" />
+                <path d="M15 3a6 6 0 0 1 6 6" />
+            </svg>
+        </div>
+        <div class="contact-box__info text-center">
+          <a href="tel:7976082642" class="contact-box__info--title">+91 7976082642</a>
+          <p class="contact-box__info--subtitle">Available for opportunities</p>
+        </div>
+      </div>  
+      <!-- EMAIL -->
+      <div class="col-md-4 col-lg-4 contact-box d-flex flex-column align-items-center mb-4">
+        <div class="contact-box__icon mb-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail-opened" viewBox="0 0 24 24" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <polyline points="3 9 12 15 21 9 12 3 3 9" />
+                <path d="M21 9v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10" />
+                <line x1="3" y1="19" x2="9" y2="13" />
+                <line x1="15" y1="13" x2="21" y2="19" />
+            </svg>
+        </div>
+        <div class="contact-box__info text-center">
+          <a href="mailto:asrpcp7@gmail.com" class="contact-box__info--title">asrpcp7@gmail.com</a>
+          <p class="contact-box__info--subtitle">24/7 Response time</p>
+        </div>
+      </div>
+      <!-- LOCATION -->
+      <div class="col-md-4 col-lg-4 contact-box d-flex flex-column align-items-center mb-4">
+        <div class="contact-box__icon mb-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-2" viewBox="0 0 24 24" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <line x1="18" y1="6" x2="18" y2="6.01" />
+                <path d="M18 13l-3.5 -5a4 4 0 1 1 7 0l-3.5 5" />
+                <polyline points="10.5 4.75 9 4 3 7 3 20 9 17 15 20 21 17 21 15" />
+                <line x1="9" y1="4" x2="9" y2="17" />
+                <line x1="15" y1="15" x2="15" y2="20" />
+            </svg>
+        </div>
+        <div class="contact-box__info text-center">
+          <a href="https://www.google.com/maps/place/Jaipur,+Rajasthan/" target="_blank" class="contact-box__info--title">Rajasthan, India</a>
+          <p class="contact-box__info--subtitle">Tech & Design Club</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+        <!-- Socials -->
+        <div class="footer-sm text-center mb-4">
+            <a href="https://github.com/Aditya-Roy-oops" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/aditya-roy-oops" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/o._adi_/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/917976082642" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        
+        <div class="row text-white justify-content-center">
+            <div class="col-md-6 text-center">
+                <h5 class="fw-bold">Aditya Sharma</h5>
+                <hr class="bg-white d-inline-block" style="width: 60px; height: 2px;">
+                <p class="small text-muted">
+                    Final-year CSE student with a passion for Artificial Intelligence, IoT, and Graphic Design. Building the future with code and creativity.
+                </p>
+                <div class="copyright text-muted mt-3">
+                    &copy; 2024 Aditya Sharma | CSE Student Portfolio
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOATING BUTTON -->
+<a href="https://wa.me/917976082642" class="whatsapp-float" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+
+<script>
+    // 1. TYPING ANIMATION
+    const typingText = document.querySelector(".typing-text");
+    const words = ["AI Solutions", "Web Apps", "Data Platforms", "IoT Systems"];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function type() {
+        const currentWord = words[wordIndex];
+        if (isDeleting) {
+            typingText.textContent = currentWord.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            typingText.textContent = currentWord.substring(0, charIndex + 1);
+            charIndex++;
+        }
+
+        if (!isDeleting && charIndex === currentWord.length) {
+            isDeleting = true;
+            setTimeout(type, 2000); // Pause at end of word
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+            setTimeout(type, 500);
+        } else {
+            setTimeout(type, isDeleting ? 100 : 200);
+        }
+    }
+    document.addEventListener("DOMContentLoaded", type);
+
+
+    // 2. NAVBAR SCROLL EFFECT
+    const navbar = document.querySelector(".navbar");
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+        } else {
+            navbar.classList.remove("scrolled");
+        }
+    });
+
+    // 3. PROJECT FILTERING
+    function filterProjects(category) {
+        const items = document.querySelectorAll('.portfolio-item');
+        const buttons = document.querySelectorAll('.portfolio .btn-outline-primary');
+        
+        // Update active button
+        buttons.forEach(btn => {
+            btn.classList.remove('active');
+            if(btn.innerText.toLowerCase().includes(category) || (category === 'all' && btn.innerText === 'All')) {
+                btn.classList.add('active');
+            }
+        });
+
+        items.forEach(item => {
+            if (category === 'all' || item.classList.contains(category)) {
+                item.style.display = 'block';
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'scale(1)';
+                }, 100);
+            } else {
+                item.style.opacity = '0';
+                item.style.transform = 'scale(0.8)';
+                setTimeout(() => {
+                    item.style.display = 'none';
+                }, 300);
+            }
+        });
+    }
+
+    // 4. INIT GLIGHTBOX (If used for gallery later)
+    const lightbox = GLightbox({
+        touchNavigation: true,
+        loop: true,
+        autoplayVideos: true
+    });
+
+    // --- Formspree / Contact Form Logic ---
+        const form = document.getElementById('contact-form');
+        const submitButton = document.getElementById('submit-button');
+        const formMessage = document.getElementById('form-message');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Simple check to prevent submission if endpoint is placeholder
+            if (form.action.includes('YOUR_FORMSPREE_ENDPOINT')) {
+                 formMessage.textContent = 'Please update the Formspree action URL in the code to enable message sending.';
+                 formMessage.classList.remove('hidden', 'text-green-600');
+                 formMessage.classList.add('text-red-600');
+                 return;
+            }
+
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i data-lucide="loader-circle" class="w-5 h-5 mr-2 animate-spin"></i> Sending...';
+            lucide.createIcons();
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    formMessage.textContent = 'Sent successfully! I will get back to you soon.';
+                    formMessage.classList.remove('hidden', 'text-red-600');
+                    formMessage.classList.add('text-green-600');
+                    form.reset();
+                } else {
+                    const data = await response.json();
+                    if (data.errors) {
+                        formMessage.textContent = data.errors.map(err => err.message).join(", ");
+                    } else {
+                        formMessage.textContent = 'Oops! There was an issue submitting the form.';
+                    }
+                    formMessage.classList.remove('hidden', 'text-green-600');
+                    formMessage.classList.add('text-red-600');
+                }
+            } catch (error) {
+                console.error('Submission error:', error);
+                formMessage.textContent = 'Network error or connection failed.';
+                formMessage.classList.remove('hidden', 'text-green-600');
+                 formMessage.classList.add('text-red-600');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.innerHTML = 'Send Sketch';
+                lucide.createIcons();
+                formMessage.classList.remove('hidden');
+            }
+        });
+
+</script>
+</body>
+</html>
